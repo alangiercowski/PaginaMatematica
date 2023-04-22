@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+
+    <title>Pagina Matematica</title>
+</head>
+
+<body>
+    <button onclick="runSample()">a</button>
+</body>
+
+</html>
+<script>
+
+// Carga la biblioteca de cliente de Google API
+gapi.load('client:auth2', function() {
+  gapi.client.init({
+    apiKey: 'AIzaSyBcLT3EdgTdy63svRdOVMTtOFy1ZNQD57w',
+    clientId: '440625834556-bq14lrj6sbh82otp381ru754q2qd9bc5.apps.googleusercontent.com',
+    discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/forms/v1/rest"],
+    scope: "https://www.googleapis.com/auth/forms"
+  }).then(function() {
+    // Autoriza el acceso a la API de Google Forms
+    gapi.auth2.getAuthInstance().signIn().then(function() {
+      // Hace una solicitud GET a la API de Google Forms para recuperar las respuestas del formulario
+      $.get("https://forms.googleapis.com/forms/v1/responses/17OknLJadJsEAVaCiBSZluSAW_QewjxAXmevk7_9_yT0", function(data) {
+        // Maneja los datos de las respuestas del formulario
+        console.log(data);
+      });
+    });
+  });
+});
+
+
+
+</script>
